@@ -24,7 +24,7 @@ train_path = ["/data0/train_gf2"]
 train_loader_list = build_train_loaders(train_path=train_path,max_value=[1023.0],batch_size=32)
 test_path = ["/data0/test_gf2_r_20"]
 test_loader_list = build_test_loaders(train_path=test_path,max_value=[1023.0],batch_size=1,shuffle=False,is_my=False,flag=0)
-net = DRp_single_pan_and_ms_share_t(dim=[64,64*2,64*4],num_block=[1,1,1]).to(device)
+net = DRp_single_pan_and_ms_share_t(dim=[64,64*2,64*4]).to(device)
 rf = RectifiedFlow(net,num_timesteps=1000).to(device)
 set_seed(42)
 optimizer = Adam(net.parameters(),1e-4,betas=(0.9,0.999))
